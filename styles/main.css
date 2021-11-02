@@ -1,0 +1,189 @@
+/* Declare global variables for the colour palette. */
+:root {
+    --red: #be1622;
+    --blue: #007fb0;
+    --grey: #34516C;
+    --forest: #006250;
+    --sunrise: #f47721;
+    --lake: #0099d2;
+    --slate: #577a9b;
+    --grass: #339933;
+    --gold: #f2be1a;
+    --sky: #53b7e8;
+    --silver: #919cad;
+    --olive: #9bcb4e;
+    --light-sky: #a4d3f2;
+    --cloud: #c7cbda;
+}  
+
+/* Set global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, serif;
+    font-weight: 500;
+}
+
+/* ==================== Header Styles ==================== */
+
+/* Primary Navigation Styles */
+
+.nav {
+    background-color: var(--red);
+    display: block;
+}
+
+.logo {
+    /* Set height and width of the logo */
+    height: 140px;
+    width: auto;
+}
+
+.nav-header {
+    vertical-align: top;
+    display: inline-block; /* Inline-block is used to allow the margin to be changed. */
+    margin: 3rem 0 0 0; /* Center the header */
+    text-shadow: 1px 1px 4px black; /* Emphasise the title using a small shadow */
+    color: white;
+    font-size: 2rem;
+}
+
+.nav-links {
+    list-style-type: none; /* Remove default bullet points. */
+    display: inline; /* Display content on the same line. */
+}
+
+.nav-link {
+    float: right; /* Push to the right of the navbar. */
+}
+
+.nav-link a {
+    display: block;
+    text-decoration: none; /* Remove default text decoration for hyperlinks. */
+    color: white;
+    margin-top: 2.6rem; /* Center the links inside the navbar */
+    font-weight: 500;
+    padding: 1rem;
+
+    transition: .3s; /* Adds a transition to the :hover effect to give a smoother look. */
+}
+
+.nav-link a:hover {
+    background-color: #9e111b; /* Change background color slightly when this element is hovered by the mouse. */
+}
+
+.nav-link .active {
+    background-color: #9e111b; /* Indicate to user which link is currently active */
+}
+
+/* Secondary Navigation Styles */
+
+.burger-icon {
+    display: none; /* Hide the burger icon by default */
+}
+
+.burger-nav {
+    height: 0px; /* Set height to zero so transition duration can be applied. */
+    display: block;
+    transition: .1s;
+}
+
+.burger-links {
+    display: none;
+}
+
+.show .burger-nav {
+    background-color: var(--grey);
+    height: 60px;
+    transition: .1s;
+}
+.show .burger-links {
+    list-style-type: none;
+    display: inline-block;
+}
+.show .burger-link {
+    float: left;
+    margin-top: .3rem;
+
+}
+.show .burger-link a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    transition: .3s;
+}
+
+.show .burger-link a:hover {
+    background-color: #2b4359; 
+}
+
+.show .burger-link .active {
+    background-color: #2b4359;
+}
+
+/* Rotate first bar of burger icon */
+.animate .bar1 {
+    height: 5px;
+    margin: 6px 0;
+
+    /* Rotate the first bar to form one half the 'X' character. */
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+/* Fade out the second bar */
+.animate .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.animate .bar3 {
+    height: 5px;
+
+    /* Rotate the third bar to form the last half the 'X' character. */
+    -webkit-transform: rotate(45deg) translate(-7px, -8px) ;
+    transform: rotate(45deg) translate(-7px, -8px) ;
+
+}
+
+/* Media query to handle when the screen falls below an appropriate width to display the primary navigation. */
+@media only screen and (max-width: 800px) {
+    
+    /* Hide primary navigation */
+    .nav-links {
+        display: none;
+    }
+
+    /* Position the burger icon */
+    .burger-icon {
+        display: inline;
+        float: right;
+        cursor: pointer;
+        margin-top: 3rem;
+        margin-right: 1rem;
+        padding: .3rem .5rem;
+
+        transition: .3s;
+    }
+
+    .burger-icon:hover {
+        background-color: #9e111b;
+    }
+
+    /* Display the burger icon */
+    .bar1, .bar2, .bar3 {
+        width: 1.8rem;
+        height: .2rem;
+        background-color: white;
+        margin: .3rem 0;
+        transition: .4s;     
+    }
+
+    .logo {
+        height: 120px;
+    }
+
+    .nav-header {
+        font-size: 1.5rem;
+    }
+}

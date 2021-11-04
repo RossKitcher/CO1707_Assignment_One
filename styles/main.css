@@ -146,7 +146,73 @@ body {
 
 }
 
-/* Media query to handle when the screen falls below an appropriate width to display the primary navigation. */
+
+
+/* ==================== Page Content Styles ==================== */
+.content {
+    margin: 1rem auto; /* Automatically center the content using left/right margins */
+    width: 55rem;
+}
+
+.content h1 {
+    color: var(--grey);
+    font-size: 2.4rem;
+}
+
+.content h2 {
+    color: var(--gold);
+    font-size: 1.8rem;
+}
+
+.content p {
+    margin: .6rem 0;
+}
+
+/* Set width and height for iFrame embedded YouTube video. */
+.youtube-video {
+    width: inherit;
+    height: 25rem;
+}
+
+/* ==================== Footer Styles ==================== */
+/* Flexbox is used to evenly display and wrap multiple columns in the footer. */
+/* Flexbox parent */
+.footer {
+    display: flex; /* Enable flexbox. */
+    flex-flow: row wrap; /* Shorthand to order from left to right in a row and enable wrapping. */
+    justify-content: center; /* Center all children */
+    align-items: flex-start; /* Align children to the top */
+    background-color: var(--grey);
+}
+
+/* Flexbox child */ 
+.footer-child {
+    flex-grow: 1;
+    margin: 1rem;
+    color: white;
+}
+
+/* Change color of line break */
+.dark {
+    color: white;
+}
+
+
+/* Styles for screen sizes less than 1080px and more than 800px (laptops) */
+@media only screen and (max-width: 1080px) {
+    .content {
+        width: 45rem;
+    }
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* Styles for screen sizes less than 800px and more than 500px (tablets, horizontal smart phone) */
 @media only screen and (max-width: 800px) {
     
     /* Hide primary navigation */
@@ -185,5 +251,54 @@ body {
 
     .nav-header {
         font-size: 1.5rem;
+    }
+
+    .content {
+        width: 30rem;
+    }
+
+    .content h1 {
+        font-size: 1.6rem;
+    }
+
+    .content h2 {
+        font-size: 1.4rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+        margin: .4rem 0;
+    }
+
+    .youtube-video {
+        height: 17rem;
+    }
+}
+/* Styles for screen sizes less than 500px (smartphones) */
+@media only screen and (max-width: 500px) {
+    .logo {
+        height: 100px;
+    }
+
+    .nav-header {
+        font-size: 1.3rem;
+    }
+
+    .content {
+        width: 24rem;
+    }
+    .content h1 {
+        font-size: 1.3rem;
+    }
+    .content h2 {
+        font-size: 1.2rem;
+    }
+    .content p {
+        font-size: 0.9rem;
+        margin: .3rem 0;
+    }
+
+    .youtube-video {
+        height: 13rem;
     }
 }

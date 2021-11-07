@@ -16,6 +16,11 @@
     </head>
     <body onresize="handleMenuResize()">
 
+        <!-- ==================== "Top" Button ==================== -->
+        <div class="sticky-top-button">
+            <a href="#top">Top ↑</a>
+        </div>
+
         <!-- ==================== Navigation ==================== -->
         <div class="nav">
             <nav>
@@ -49,8 +54,21 @@
             </div>
         </div>
 
-        <h1>This is the products page</h1>
-        <p>More text</p>
+        <!-- ==================== Page Content ==================== -->
+        <div class="products-page">
+            <ul>
+                <!-- Elements for same page navigation. -->
+                <li>Products ></li>
+                <li><a href="#tshirt">t-shirts</a></li>
+                <li><a href="#hoodie">hoodies</a></li>
+                <li><a href="#jumper">jumpers</a></li>
+            </ul>
+            <div class="products-parent" id="displayProducts">
+                
+                <!-- Content of this container is populated using generate-products.js -->
+
+            </div>
+        </div>
 
         <!-- ==================== Footer ==================== -->
         <!-- Flexbox parent container -->
@@ -85,5 +103,6 @@
 
         <!-- Import JavaScript. -->
         <script src="js/main.js"></script>
+        <script src="js/generate-products.js"></script>
     </body>
 </html>

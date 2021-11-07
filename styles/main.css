@@ -31,6 +31,10 @@ body {
 .nav {
     background-color: var(--red);
     display: block;
+
+    /* Set position and z-index to allow the navigation to display over the "Top" button on products.html. */
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -197,6 +201,164 @@ body {
     color: white;
 }
 
+/* ==================== Products Styles ==================== */
+
+/* Style the same-page navigation. */
+.products-page ul {
+    margin: 0;
+    display: block;
+}
+
+.products-page ul li {
+    display: inline-block;    
+}
+.products-page ul li a {
+    display: block;
+    padding: .5rem 1rem;
+    margin: .5rem 0;
+    transition: .3s;
+}
+
+.products-page ul li a:hover {
+    background-color: var(--slate);
+    color: white;
+}
+
+/* Style the 'top' button container that will take the user to the top of the page. */
+.sticky-top-button {
+
+    /* Set a fixed position at the top of the page. */
+    position: fixed; 
+    top: 0;
+
+    /* Set a 100% width to create a bar across the whole page. */
+    width: 100%;
+
+    /* Set remaining styles. */
+    background-color: var(--grey);
+    text-align: center;
+    padding: 1rem 0;
+
+    /* Apply a Z-index of zero to ensure it is displayed beneath the site's navigation. */
+    /* This ensures the 'top' button is only displayed when a user is scrolling down the page. */
+    z-index: 0;
+}
+
+/* Style the actual 'top' button. */
+.sticky-top-button a {
+
+    text-decoration: none;
+    color: white;    
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    padding: 1rem 10rem;
+    letter-spacing: .1rem;
+
+    transition: .3s;
+}
+
+/* Change the 'top' button's background color when it is hovered by the user. */
+.sticky-top-button a:hover {
+    background-color: #2b4359;
+}
+
+/* Style the FlexBox parent. */
+.products-parent {
+    display: flex;
+    flex-flow: row wrap; /* Display children from left to right and wrap children to fit screen width. */
+    justify-content: space-evenly; /* Display children evenly. */
+    align-items: flex-start; /* Align a row from the top of each child. */
+    gap: 1rem; /* Add a 'gap' in-between each child. */
+
+    margin: 1rem 4rem;
+}
+
+/* Style the FlexBox children. */
+.products-child {
+    flex-grow: 0; /* Keep a consistent width if screen is resized. */
+    flex-basis: 25rem; /* Set default size of element. */
+    box-shadow: 0 0 8px var(--slate); /* Add a small shadow to add emphasis to a product. */
+    border-radius: 4px;
+}
+
+/* Style a product's display image. */
+.products-child img {
+
+    /* Set dimensions of the product image. */
+    width: 20rem;
+    height: 20rem;
+
+    /* Set block display and an automatic horizontal margin to keep the image centered. */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style a product's title. */
+.product-desc h3 {
+    color: var(--gold);
+    text-shadow: 0 0 3px black;
+    font-size: 2rem;
+}
+
+/* Style a product's description container. */
+.product-desc {
+    background-color: var(--slate);
+    padding: 1rem;
+}
+
+/* Style a product's textual description. */
+.product-desc p {
+    color: white;
+}
+
+/* Style a product's price. */
+.price {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Style a product's 'Add to cart' button. */
+.button {
+
+    /* Remove the default <button> styling. */
+    border: none;
+    text-decoration: none;
+
+    /* Set the cursor's state when it hovers this button. */
+    cursor: pointer;
+
+    /* Set colours. */
+    background-color: var(--gold);
+    color: black;
+
+    /* Set the button's text styling. */
+    padding: .5rem 3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: .05rem;
+    
+    /* Round the edges of the element. */
+    border-radius: 5px;
+
+    /* Center the button inside it's containter. */
+    display: block;
+    margin: 0 auto;    
+
+    /* Add transition timer for when :hover is triggered. */
+    transition: .3s;
+}
+
+/* When the button is hovered by the cursor. */
+.button:hover {
+    background-color: #bd9413;
+    padding: .6rem 3.5rem;
+}
+
+/* Slightly different width value for tshirts due to image dimensions no longer being a square. */
+.products-child .tshirt {
+    width: 16rem;
+}
 
 /* Styles for screen sizes less than 1080px and more than 800px (laptops) */
 @media only screen and (max-width: 1080px) {

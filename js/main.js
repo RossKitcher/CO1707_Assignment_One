@@ -1,3 +1,6 @@
+// main.js
+// JavaScript to be used for all .html files.
+
 // When the burger menu icon is clicked.
 function animateBurger(icon) {
     icon.classList.toggle("animate"); // Toggle the burger icon class for animation
@@ -23,3 +26,4 @@ function handleMenuResize() {
         }
     }
 }
+

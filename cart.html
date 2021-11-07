@@ -49,8 +49,32 @@
             </div>
         </div>
 
-        <h1>This is the shopping cart</h1>
-        <p>More text</p>
+        <!-- ==================== Page Content ==================== -->
+        <div class="cart-content">
+            <h1>Shopping Cart</h1>
+            <p>The items you've added to your shopping cart are:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item No.</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="cartBody">
+                    
+                    <!-- Content of the table body is added in generate-cart.js -->
+
+                </tbody>
+                <tfoot id="cartFooter">
+                    
+                    <!-- Content of footer added in generate-cart.js -->
+
+                </tfoot>
+            </table>
+        </div>
+
 
         <!-- ==================== Footer ==================== -->
         <!-- Flexbox parent container -->
@@ -85,5 +109,6 @@
 
         <!-- Import JavaScript. -->
         <script src="js/main.js"></script>
+        <script src="js/generate-cart.js"></script>
     </body>
 </html>

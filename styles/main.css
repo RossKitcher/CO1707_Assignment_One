@@ -360,6 +360,72 @@ body {
     width: 16rem;
 }
 
+/* ==================== Shopping Cart Styles ==================== */
+
+/* Set width and automatic horizontal margin for the main container. */
+.cart-content {
+    display: block;
+    width: 90rem;
+    margin: 1rem auto;
+}
+
+.cart-content h1 {
+    color: var(--gold);
+    font-size: 2.4rem;
+}
+
+.cart-content table {
+
+    /* Set 100% width to fill container. */
+    width: 100%;
+
+    box-shadow: 0 0 4px var(--slate);
+}
+
+/* Add a border around each cell */
+.cart-content table, .cart-content th, .cart-content td {
+    border: 1px solid white;
+    border-collapse: collapse; /* Touching borders are 'collapsed' into one, ensuring the border-width is always 1px. */
+}
+
+/* Style the table headings. */
+.cart-content table thead tr th {
+    background-color: var(--slate);
+    color: white;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+/* Style the table body. */
+.cart-content table tbody tr td {
+    background-color: var(--cloud);
+    color: black;
+    width: 25%;
+    text-align: center;
+}
+
+/* Add font styles to the 3rd column (product name). */
+.cart-content table tbody tr td:nth-child(3) {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Set dimensions of images inside the table. */
+.cart-content table tbody tr td img {
+    width: 10rem;
+    height: 10rem;
+}
+
+/* Style the table footer. */
+.cart-content table tfoot tr td {
+    background-color: var(--slate);
+    color: white;
+    text-align: right;
+    border: none;
+    font-weight: 700;
+    padding: .5rem;
+}
+
 /* Styles for screen sizes less than 1080px and more than 800px (laptops) */
 @media only screen and (max-width: 1080px) {
     .content {

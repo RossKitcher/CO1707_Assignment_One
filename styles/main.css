@@ -400,8 +400,13 @@ body {
 .cart-content table tbody tr td {
     background-color: var(--cloud);
     color: black;
-    width: 25%;
+    width: auto;
     text-align: center;
+}
+
+/* Give the first column a lesser width. */
+.cart-content table tbody tr td:nth-child(1) {
+    width: 10%;
 }
 
 /* Add font styles to the 3rd column (product name). */
@@ -414,6 +419,7 @@ body {
 .cart-content table tbody tr td img {
     width: 10rem;
     height: 10rem;
+    margin-top: 1rem;
 }
 
 /* Style the table footer. */
@@ -424,6 +430,23 @@ body {
     border: none;
     font-weight: 700;
     padding: .5rem;
+}
+
+/* Style the table body when there are no items in the shopping cart. */
+.cart-content table tbody tr .empty {
+    padding: 10rem;
+}
+
+/* Class to hide an element. */
+.hidden {
+    display: none;
+}
+
+/* Styles for screen sizes less than 1480px and more than 1080px. */
+@media only screen and (max-width: 1480px) {
+    .cart-content {
+        width: 65rem;
+    }
 }
 
 /* Styles for screen sizes less than 1080px and more than 800px (laptops) */
@@ -437,6 +460,14 @@ body {
 
     .content h2 {
         font-size: 1.7rem;
+    }
+
+    .cart-content {
+        width: 45rem;
+    }
+
+    .cart-content table thead tr th {
+        font-size: 1.2rem;
     }
 }
 
@@ -501,6 +532,24 @@ body {
     .youtube-video {
         height: 17rem;
     }
+
+    .cart-content {
+        width: 30rem;
+    }
+
+    .cart-content table tbody tr td img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .cart-content table thead tr th {
+        font-size: 1rem;
+    }
+
+    .cart-content table tbody tr td:nth-child(3) {
+        font-size: 1rem;
+    }
+
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
@@ -528,5 +577,18 @@ body {
 
     .youtube-video {
         height: 13rem;
+    }
+
+    .cart-content {
+        width: 20rem;
+    }
+
+    .cart-content table tbody tr .empty {
+        padding: 6rem;
+    }
+
+    .cart-content table tbody tr td img {
+        width: 6rem;
+        height: 6rem;
     }
 }

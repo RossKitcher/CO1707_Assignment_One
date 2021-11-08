@@ -97,10 +97,16 @@ handleBuy = (element) => {
     prodName = titleSplit[0];
     prodColour = titleSplit[1];
 
-    let cartAmount = localStorage.length;
-
+    let maxID = 0;
     
-    localStorage.setItem("item" + (cartAmount+1), prodName + "," + prodColour + "," + price + "," + imgFilepath);
+    for (let i = 0; i < localStorage.length; i++) {
+        let id = parseInt(localStorage.key(i).slice(4));
+        if (id > maxID) {
+            maxID = id;
+        }
+    }
+    
+    localStorage.setItem("item" + (maxID+1), prodName + "," + prodColour + "," + price + "," + imgFilepath);
     
 
     

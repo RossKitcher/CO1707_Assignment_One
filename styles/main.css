@@ -212,6 +212,7 @@ body {
 .products-page ul li {
     display: inline-block;    
 }
+
 .products-page ul li a {
     display: block;
     padding: .5rem 1rem;
@@ -400,17 +401,18 @@ body {
 .cart-content table tbody tr td {
     background-color: var(--cloud);
     color: black;
-    width: auto;
+    width: 24;
     text-align: center;
 }
 
 /* Give the first column a lesser width. */
-.cart-content table tbody tr td:nth-child(1) {
-    width: 10%;
+.cart-content table tbody tr td:nth-child(1), .cart-content table tbody tr td:nth-child(2) {
+    width: 8%;
+    border-right: none;
 }
 
-/* Add font styles to the 3rd column (product name). */
-.cart-content table tbody tr td:nth-child(3) {
+/* Add font styles to the 4th column (product name). */
+.cart-content table tbody tr td:nth-child(4) {
     font-weight: 700;
     font-size: 1.1rem;
 }
@@ -420,6 +422,25 @@ body {
     width: 10rem;
     height: 10rem;
     margin-top: 1rem;
+}
+
+/* Set styles of the Remove button. */
+.cart-content .remove-button {
+    text-decoration: none;
+    color: white;
+    background-color: var(--red);
+    padding: .5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--slate);
+    cursor: pointer;
+    border: none;
+
+    transition: .3s;
+}
+
+/* When a remove button is hovered. */
+.cart-content .remove-button:hover {
+    background-color: #9e111b;
 }
 
 /* Style the table footer. */
@@ -550,6 +571,10 @@ body {
         font-size: 1rem;
     }
 
+    .cart-content table tbody tr td button {
+        font-size: .7rem;
+    }
+
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
@@ -580,7 +605,7 @@ body {
     }
 
     .cart-content {
-        width: 20rem;
+        width: 24rem;
     }
 
     .cart-content table tbody tr .empty {
@@ -590,5 +615,10 @@ body {
     .cart-content table tbody tr td img {
         width: 6rem;
         height: 6rem;
+    }
+
+    .cart-content table tbody tr td button {
+        font-size: .6rem;
+        padding: .3rem .2rem;
     }
 }

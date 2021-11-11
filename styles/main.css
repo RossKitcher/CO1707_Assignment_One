@@ -463,6 +463,34 @@ body {
     display: none;
 }
 
+/* ==================== View Item Styles ==================== */
+
+.item-container {
+    width: 50rem;
+    display: block;
+    margin: 1rem auto;
+
+    box-shadow: 0 0 5px var(--slate);
+    border-radius: 4px;
+}
+
+.item-container img {
+    width: 40rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.item-desc {
+    background-color: var(--slate);
+    color: white;
+    padding: 1rem;
+}
+
+.item-desc h3 {
+    color: var(--gold);
+    font-size: 2rem;
+}
+
 /* Styles for screen sizes less than 1480px and more than 1080px. */
 @media only screen and (max-width: 1480px) {
     .cart-content {
@@ -489,6 +517,14 @@ body {
 
     .cart-content table thead tr th {
         font-size: 1.2rem;
+    }
+
+    .item-container {
+        width: 45rem;
+    }
+
+    .item-container img {
+        width: 35rem;
     }
 }
 
@@ -575,6 +611,14 @@ body {
         font-size: .7rem;
     }
 
+    .item-container {
+        width: 30rem;
+    }
+
+    .item-container img {
+        width: 25rem;
+    }
+
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
@@ -620,5 +664,24 @@ body {
     .cart-content table tbody tr td button {
         font-size: .6rem;
         padding: .3rem .2rem;
+    }
+
+    .item-container {
+        width: 20rem;
+    }
+
+    .item-container img {
+        width: 15rem;
+    }
+
+    .item-desc h3 {
+        font-size: 1.4rem;
+    }
+    .item-desc p {
+        font-size: .8rem;
+    }
+
+    .item-desc button {
+        font-size: .9rem;
     }
 }

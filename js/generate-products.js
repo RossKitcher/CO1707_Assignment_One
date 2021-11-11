@@ -26,6 +26,7 @@ createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshir
     let descContainer = document.createElement("div");
     let nameNode = document.createElement("h3");
     let descNode = document.createElement("p");
+    let readmoreNode = document.createElement("a");
     let priceNode = document.createElement("p");
     let buyNode = document.createElement("button");
 
@@ -39,16 +40,23 @@ createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshir
     let altAtt = document.createAttribute("alt");
 
     // Create attribute for the <button> tag.
-    let onclickAtt = document.createAttribute("onclick");
+    let bOnclickAtt = document.createAttribute("onclick");
+
+    // Create attribute for the <a> tag.
+    let hrefAtt = document.createAttribute("href");
+    let aOnclickAtt = document.createAttribute("onclick");
 
     // Give the attributes a value.
     srcAtt.value = filepath;
     altAtt.value = alternateText;
-    onclickAtt.value = "handleBuy(this)";
+    bOnclickAtt.value = "handleBuy(this)";
+    hrefAtt.value = "item.html";
+    aOnclickAtt.value = "handleReadmore(this)";
 
     // Create text nodes to the tags featuring text.
     let titleText = document.createTextNode(title);
     let descText = document.createTextNode(desc);
+    let readmoreText = document.createTextNode(" Read more...");
     let priceText = document.createTextNode(price);
     let buyText = document.createTextNode("Add to Cart");
 
@@ -57,11 +65,14 @@ createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshir
     descNode.appendChild(descText);
     priceNode.appendChild(priceText);
     buyNode.appendChild(buyText);
+    readmoreNode.appendChild(readmoreText);
 
     // Set the attributes previously created for the <img> and <button> tag.
     imgNode.setAttributeNode(srcAtt);
     imgNode.setAttributeNode(altAtt);
-    buyNode.setAttributeNode(onclickAtt);
+    buyNode.setAttributeNode(bOnclickAtt);
+    readmoreNode.setAttributeNode(hrefAtt);
+    readmoreNode.setAttributeNode(aOnclickAtt);
 
     // Add classes to elements to enable CSS styling.
     divContainer.classList.add("products-child");
@@ -75,6 +86,7 @@ createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshir
     }
 
     // Add the previously created nodes to the relevant containers.
+    descNode.appendChild(readmoreNode);
     descContainer.appendChild(nameNode);
     descContainer.appendChild(descNode);
     descContainer.appendChild(priceNode);
@@ -86,31 +98,19 @@ createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshir
     parentContainer.appendChild(divContainer);
 }
 
-handleBuy = (element) => {
-    let descContainer = element.parentElement;
+// Function to handle when the 'Read more...' link is clicked.
+handleReadmore = (element) => {
+
+    // Extract data from the product in question by navigating upwards on the DOM.
+    let descContainer = element.parentElement.parentElement;
     let divContainer = descContainer.parentElement;
     let fullname = descContainer.getElementsByTagName("h3")[0].innerHTML;
+    let desc = descContainer.getElementsByTagName("p")[0].innerHTML.split("<a")[0];
     let price = descContainer.getElementsByTagName("p")[1].innerHTML;
     let imgFilepath = divContainer.getElementsByTagName("img")[0].getAttribute("src");
 
-    let titleSplit = fullname.split(" - ");
-    prodName = titleSplit[0];
-    prodColour = titleSplit[1];
-
-    let maxID = 0;
-    
-    for (let i = 0; i < localStorage.length; i++) {
-        let id = parseInt(localStorage.key(i).slice(4));
-        if (id > maxID) {
-            maxID = id;
-        }
-    }
-    
-    localStorage.setItem("item" + (maxID+1), prodName + "," + prodColour + "," + price + "," + imgFilepath);
-    
-
-    
-    alert(prodName + " added to cart!");
+    sessionStorage.removeItem("product"); // Remove any previously set data.
+    sessionStorage.setItem("product", fullname + "," + price + "," + imgFilepath + "," + desc); // Add the product-specific data to the sessionStorage.
 }
 
 // Define variables to be used in the subsequent for-loops.

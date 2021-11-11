@@ -4,6 +4,7 @@ The current web pages implemented:
 * index.html
 * products.html
 * cart.html
+* item.html
 
 
 All webpages feature the same __Navigation__ and __Footer__. 
@@ -22,6 +23,10 @@ The 'add to cart' button will add the selected product to the user's shopping ca
 This page displays the the user's shopping cart. This is done by utitlising HTML5's localStorage to keep persistent data of products the user has added to the cart. The data is displayed in a responsive table and features a subtotal of the total price of all items added.  
 
 The shopping cart's extended features include a 'Remove' button and a 'Clear All' button. A 'Remove' button will be displayed next to every product inside the cart and, when clicked, will prompt the user to confirm if they want to remove the selected item. If yes is clicked, the relevant item is removed from the localStorage, and subsequently occulted from the page. When the 'Clear All' button is clicked, all items from the localStorage are removed; emptying the shopping cart.
+## item.html
+This page displays all information about one product and is accessed when the user clicks a 'Read More...' button on products.html. The contents of this page are first taken from sessionStorage, then programatically created and appended to a parent div container.  
+
+From this page, the user can still add the selected product to the shopping cart by clicking the 'Add to Cart' button.
 ## Navigation
 The page navigation allows the user to browse through all pages on the website. It features a logo, a header, and the navigation links.  
 

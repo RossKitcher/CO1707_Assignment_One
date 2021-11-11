@@ -7,7 +7,7 @@ const hoodieDesc = "cotton authentic character and practicality are combined in 
 const hoodiePrice = "£39.99";
 
 const jumperColours = ["Purple","Rusty Red","Water Blue","White","Pink","Black","Old Blue","Dark Grey","Red","Brown","Green","Dark Red","Yellow","Light Grey","Light Green","Old Red","Light Purple","Slate Blue","Real Red","Old Pink","Slate Grey","Bright Green","Teal","Sky Blue","Sunshine Pink","Bronze","Olive Green","Bright White Green","Navy Blue","Rusty Orange","Bright Orange","Sky Purple","Really Red","Plum Purple","Dark Purple","Vibrant Red","Ocean Blue","Creame","Lighter Blue","Light Grey"];
-const jumperDesc = "cotton authentic character and practicality are combined in this winter jumper for students that goes with everything to create casual looks";
+const jumperDesc = "cotton authentic character and practicality are combined in this winter jumper for students that goes with everything to create casual looks";
 const jumperPrice = "£29.99";
 
 const tshirtColours = ["Navy Blue New","Rusty Red New","Burgundy","Pink","Teal","Black","Old Red","Grey","Red","Brown","Dark Purple","Yellow","Mustard Yellow","Dark Grey","Dark Green","Bright Green","Olive Green","Dark Grey","Orange","Purple","Slate Blue","Bright Pink","Brightly Green","Lime Green","Ocean Blue","Dark Red","Another Green","Slate Grey","Bright Orange","Another Purple","Real Red","Brilliant Blue","Creame","Teal Blue","White"];
@@ -19,7 +19,7 @@ const parentContainer = document.getElementById("displayProducts");
 
 // Function to append a FlexBox child to the parent Flexbox container.
 // Each child appended represents a single product.
-createFlexChild = (title, filepath, alternateText, isFirst, isTshirt = false) => {
+createFlexChild = (title, filepath, alternateText, isFirst, desc, price, isTshirt = false) => {
     // Create the elements needed to display a product.
     let divContainer = document.createElement("div");
     let imgNode = document.createElement("img");
@@ -44,12 +44,12 @@ createFlexChild = (title, filepath, alternateText, isFirst, isTshirt = false) =>
     // Give the attributes a value.
     srcAtt.value = filepath;
     altAtt.value = alternateText;
-    onclickAtt.value = "handleBuy(e)";
+    onclickAtt.value = "handleBuy(this)";
 
     // Create text nodes to the tags featuring text.
     let titleText = document.createTextNode(title);
-    let descText = document.createTextNode(hoodieDesc);
-    let priceText = document.createTextNode(hoodiePrice);
+    let descText = document.createTextNode(desc);
+    let priceText = document.createTextNode(price);
     let buyText = document.createTextNode("Add to Cart");
 
     // Add the text content to the relevant tags.
@@ -86,6 +86,33 @@ createFlexChild = (title, filepath, alternateText, isFirst, isTshirt = false) =>
     parentContainer.appendChild(divContainer);
 }
 
+handleBuy = (element) => {
+    let descContainer = element.parentElement;
+    let divContainer = descContainer.parentElement;
+    let fullname = descContainer.getElementsByTagName("h3")[0].innerHTML;
+    let price = descContainer.getElementsByTagName("p")[1].innerHTML;
+    let imgFilepath = divContainer.getElementsByTagName("img")[0].getAttribute("src");
+
+    let titleSplit = fullname.split(" - ");
+    prodName = titleSplit[0];
+    prodColour = titleSplit[1];
+
+    let maxID = 0;
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        let id = parseInt(localStorage.key(i).slice(4));
+        if (id > maxID) {
+            maxID = id;
+        }
+    }
+    
+    localStorage.setItem("item" + (maxID+1), prodName + "," + prodColour + "," + price + "," + imgFilepath);
+    
+
+    
+    alert(prodName + " added to cart!");
+}
+
 // Define variables to be used in the subsequent for-loops.
 let tempFilepath;
 let tempAltText;
@@ -108,7 +135,7 @@ for (let i = 0; i < hoodieColours.length; i++) {
     tempTitle = "UCLan Hoodie (" + (i+1) + ") - " + hoodieColours[i];
 
     // Call function to create the new child container.
-    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst);    
+    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst, hoodieDesc, hoodiePrice);    
 }
 
 // For every jumper.
@@ -122,9 +149,9 @@ for (let i = 0; i < jumperColours.length; i++) {
 
     tempFilepath = "./images/products/jumper (" + (i+1) + ").jpg";
     tempAltText = jumperColours[i] + " coloured jumper.";
-    tempTitle = "UCLan Jumper (" + (i+1) + ") - " + jumperColours[i];
+    tempTitle = "UCLan Logo Jumper (" + (i+1) + ") - " + jumperColours[i];
 
-    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst);
+    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst, jumperDesc, jumperPrice);
 }
 
 // For every t-shirt.
@@ -136,7 +163,7 @@ for (let i = 0; i < tshirtColours.length; i++) {
 
     tempFilepath = "./images/products/tshirt (" + (i+1) + ").jpg";
     tempAltText = tshirtColours[i] + " coloured t-shirt.";
-    tempTitle = "UCLan T-Shirt (" + (i+1) + ") - " + tshirtColours[i];
+    tempTitle = "UCLan Logo T-Shirt (" + (i+1) + ") - " + tshirtColours[i];
 
-    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst, true);
+    createFlexChild(tempTitle, tempFilepath, tempAltText, isFirst, tshirtDesc, tshirtPrice, true);
 }

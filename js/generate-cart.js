@@ -148,12 +148,15 @@ if (cartAmount == 0) {
     let onclickAtt = document.createAttribute("onclick");
     onclickAtt.value = "handleRemoveAll()";
     
-    // Set colspan to five to span it across the entire table.
-    let colspanAtt = document.createAttribute("colspan");
-    colspanAtt.value = "5";
+    // Set colspan attributes to cover the entire footer.
+    let subColspanAtt = document.createAttribute("colspan");
+    let buttonColspanAtt = document.createAttribute("colspan");
+    buttonColspanAtt.value = "2";
+    subColspanAtt.value = "4";
     
     // Set attribute.
-    subtotalCell.setAttributeNode(colspanAtt);
+    subtotalCell.setAttributeNode(subColspanAtt);
+    removeAllCell.setAttributeNode(buttonColspanAtt);
     
     // Create text nodes.
     let subtotalText = document.createTextNode("Subtotal: " + subtotal);

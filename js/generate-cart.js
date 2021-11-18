@@ -47,6 +47,11 @@ if (cartAmount == 0) {
 } else {
     for (let i = 0; i < localStorage.length; i++) {
 
+        // Ignores entries in the localStorage that have not been created by this application.
+        if (localStorage.key(i).slice(0,4) != "item") {
+            continue;
+        }
+
         let fullItem = localStorage.getItem(localStorage.key(i)); // Get value of item in localStorage.
         let itemArray = fullItem.split(","); // Split value on commas.
     

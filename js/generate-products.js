@@ -130,7 +130,7 @@ for (let i = 0; i < hoodieColours.length; i++) {
     }
 
     // Set parameters to be sent to createFlexChild().
-    tempFilepath = "./images/products/hoodie (" + (i+1) + ").jpg";
+    tempFilepath = "./resources/products/hoodie (" + (i+1) + ").jpg";
     tempAltText = hoodieColours[i] + " coloured hoodie.";
     tempTitle = "UCLan Hoodie (" + (i+1) + ") - " + hoodieColours[i];
 
@@ -147,7 +147,7 @@ for (let i = 0; i < jumperColours.length; i++) {
         isFirst = "jumper";
     }
 
-    tempFilepath = "./images/products/jumper (" + (i+1) + ").jpg";
+    tempFilepath = "./resources/products/jumper (" + (i+1) + ").jpg";
     tempAltText = jumperColours[i] + " coloured jumper.";
     tempTitle = "UCLan Logo Jumper (" + (i+1) + ") - " + jumperColours[i];
 
@@ -161,7 +161,7 @@ for (let i = 0; i < tshirtColours.length; i++) {
         isFirst = "tshirt";
     }
 
-    tempFilepath = "./images/products/tshirt (" + (i+1) + ").jpg";
+    tempFilepath = "./resources/products/tshirt (" + (i+1) + ").jpg";
     tempAltText = tshirtColours[i] + " coloured t-shirt.";
     tempTitle = "UCLan Logo T-Shirt (" + (i+1) + ") - " + tshirtColours[i];
 

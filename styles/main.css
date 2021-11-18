@@ -611,6 +611,7 @@ body {
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
+    
     .logo {
         height: 100px;
     }
@@ -619,15 +620,22 @@ body {
         font-size: 1.3rem;
     }
 
+    .burger-icon {
+        margin-top: 2.4rem;
+    }
+
     .content {
         width: 24rem;
     }
+
     .content h1 {
         font-size: 1.3rem;
     }
+
     .content h2 {
         font-size: 1.2rem;
     }
+
     .content p {
         font-size: 0.9rem;
         margin: .3rem 0;
@@ -672,5 +680,113 @@ body {
 
     .item-desc button {
         font-size: .9rem;
+    }
+}
+
+/* Styles for screen sizes less than 400px. */
+@media only screen and (max-width: 400px) {
+    .logo {
+        height: 70px;
+    }
+
+    .nav-header {
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+    }
+    .burger-icon {
+        margin-top: 1rem;
+    }
+
+    .content {
+        width: 20rem;
+    }
+
+    .products-page ul {
+        font-size: .8rem;
+    }
+
+    .products-child img {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .product-desc h3 {
+        font-size: 1.5rem;
+    }
+
+    .sticky-top-button a {
+        font-size: 1rem;
+        padding: 1rem 5rem;
+    }
+
+    .item-container {
+        width: 17rem;
+    }
+}
+
+/* Styles for screen sizes less than 340px. */
+@media only screen and (max-width: 340px) {
+
+    .logo {
+        height: 60px;
+    }
+
+    .nav-header {
+        font-size: 1rem;
+    }
+
+    .burger-icon {
+        margin-top: .85rem;
+    }
+
+    .content {
+        width: 17rem;
+    }
+
+    .youtube-video {
+        height: 10rem;
+    }
+    
+    .products-page ul {
+        font-size: .7rem;
+        padding-left: 1rem;
+    }
+
+    .products-child img {
+        width: 16rem;
+        height: 16rem;
+    }
+}
+
+/* Styles for screen sizes less than 290px. */
+@media only screen and (max-width: 290px) {
+
+    .logo {
+        height: 50px;
+    }
+
+    .nav-header {
+        font-size: .9rem;
+        margin-top: 1.3rem;
+    }
+
+    .burger-icon {
+        margin-top: .5rem;
+    }
+
+    .burger-links {
+        padding-left: 1rem;
+    }
+    
+    .content {
+        width: 15rem;
+    }
+
+    .products-page ul li a{
+        padding: .5rem .8rem;
+    }
+
+    .item-container {
+        width: 15rem;
     }
 }

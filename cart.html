@@ -53,30 +53,24 @@
         <div class="cart-content">
             <h1>Shopping Cart</h1>
             <p>The items you've added to your shopping cart are:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th colspan="2">Item No.</th>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody id="cartBody">
-                    
-                    <!-- Content of the table body is added in generate-cart.js -->
 
-                    <tr>
-                        <td colspan="5" class="empty hidden">You have no items in your shopping cart.</td>
-                    </tr>
+            <!-- Flexbox container to hold all the items inside the shopping cart. -->
+            <div class="cart-parent" id="cartParent">
 
-                </tbody>
-                <tfoot id="cartFooter">
-                    
-                    <!-- Content of footer added in generate-cart.js -->
+                <!-- If no items are in the cart, notify the user. -->
+                <div class="cart-child hidden" id="emptyCart">
+                    <div class="cart-title">
+                        <h3>Empty Cart</h3>
+                    </div>
+                    <div class="cart-empty">
+                        <p>You have no items in your shopping cart.</p>
+                    </div>
+                </div>
 
-                </tfoot>
-            </table>
+                <!-- Other items in the cart are added using generate-cart.js -->
+                <!-- along with extra features such as a remove button for each item, a remove all button, and a subtotal. -->
+
+            </div>
         </div>
 
 

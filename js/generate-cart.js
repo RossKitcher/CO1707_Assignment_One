@@ -4,9 +4,9 @@
 // This is called when a 'Remove' button is clicked in the shopping cart.
 handleRemove = (item) => {
 
-    let row = item.parentElement.parentElement; // Get the row by navigating upwards.
-    let id = row.getElementsByTagName("td")[1].innerHTML; // Get the id by viewing the inner HTML of the second column.
-    let productName = row.getElementsByTagName("td")[3].innerHTML;
+    let container = item.parentElement.parentElement; // Get the container by navigating upwards.
+    let id = container.id; // Get the id.
+    let productName = item.parentElement.getElementsByTagName("h3")[0].innerHTML;
 
     // Use a yes/no dialog box to ensure the user has not clicked by accident.
     if (confirm("Are you sure you want to remove " + productName + " from your shopping cart?")) {
@@ -14,7 +14,6 @@ handleRemove = (item) => {
         location.reload(); // Reload the page to refresh the shopping cart.
     }
 }
-
 
 // This is called when the 'Clear All' button is clicked.
 handleRemoveAll = () => {
@@ -28,24 +27,32 @@ handleRemoveAll = () => {
     }
 }
 
-// Create constants for the table body and footer.
-const cartBody = document.getElementById("cartBody");
-const footerBody = document.getElementById("cartFooter");
+// Create constant for the flexbox parent.
+const flexParentContainer = document.getElementById("cartParent");
 
-let cartAmount = localStorage.length; // Get amount of items in the shopping cart.
+let fullCartAmount = localStorage.length; // Get amount of items in localStorage.
+let realAmount = 0; // Amount of items in localStorage created by this application.
+
+for (let i = 0; i < fullCartAmount; i++) {
+
+    if (localStorage.key(i).slice(0,4) == "item") {
+        realAmount++;
+    }
+
+}
+
 let subtotal = 0; // Set subtotal to zero.
-
-let rows = {}; // Declare an object to hold key/value pairs of table rows.
+let children = {}; // Declare an object to hold key/value pairs of table rows.
 
 // If the shopping cart is empty, then display a message letting the user know.
 // Else if it is not empty, programatically create a table row for each item in the shopping cart.
-if (cartAmount == 0) {
+if (realAmount == 0) {
 
-    let emptyTable = document.getElementsByClassName("empty")[0]; // Get the table row.
-    emptyTable.classList.toggle("hidden"); // Toggle the 'hidden' class to show/hide the table row.
+    let emptyDiv = document.getElementById("emptyCart"); 
+    emptyDiv.classList.toggle("hidden"); // Toggle the 'hidden' class to show/hide the HTML.
 
 } else {
-    for (let i = 0; i < localStorage.length; i++) {
+    for (let i = 0; i < fullCartAmount; i++) {
 
         // Ignores entries in the localStorage that have not been created by this application.
         if (localStorage.key(i).slice(0,4) != "item") {
@@ -62,114 +69,95 @@ if (cartAmount == 0) {
         let tempFilepath = itemArray[3];
     
         // Create new HTML elements to hold the data to be added.
-        let tableRow = document.createElement("tr"); 
-        let removeCell = document.createElement("td");       
-        let idCell = document.createElement("td");
-        let imgCell = document.createElement("td");
-        let nameCell = document.createElement("td");
-        let priceCell = document.createElement("td");
-        let buttonNode = document.createElement("button");
+        let flexChildContainer = document.createElement("div"); 
+        let titleContainer = document.createElement("div");       
+        let titleNode = document.createElement("h3");
+        let removeNode = document.createElement("button");
         let imgNode = document.createElement("img");
+        let descContainer = document.createElement("div");
         let colourNode = document.createElement("p");
+        let priceNode = document.createElement("p");
 
-        buttonNode.classList.add("remove-button"); // Add class to button node.
+        // Give the flex child container an id to ease the process of removing an item from the cart.
+        flexChildContainer.id = localStorage.key(i).slice(4);
 
-        // Create attributes needed for the remove button.
-        let onclickAtt = document.createAttribute("onclick");
+        // Add relevant classes.
+        flexChildContainer.classList.add("cart-child");
+        titleContainer.classList.add("cart-title");
+        removeNode.classList.add("remove-button")
+        descContainer.classList.add("cart-desc");
+        priceNode.classList.add("price");
+
+        // Set attributes.
+        imgNode.src = tempFilepath;
+        imgNode.alt = tempColour + " coloured " + tempName + ".";
+        removeNode.setAttribute("onclick", "handleRemove(this)");
+
+        // Set the innerHTML.
+        removeNode.innerHTML = "Remove";
+        titleNode.innerHTML = tempName;
+        colourNode.innerHTML = tempColour;
+        priceNode.innerHTML = tempPrice;
         
-        // Create attributes for the <img> tag.
-        let srcAtt = document.createAttribute("src");
-        let altAtt = document.createAttribute("alt");
-    
-        // Set attribute values.
-        onclickAtt.value = "handleRemove(this)";
-        srcAtt.value = tempFilepath;
-        altAtt.value = tempColour + " coloured " + tempName + ".";
-    
-        // Give the attributes a parent element.
-        buttonNode.setAttributeNode(onclickAtt);
-        imgNode.setAttributeNode(srcAtt);
-        imgNode.setAttributeNode(altAtt);
-    
-        // Create text nodes to hold the text content
-        let removeText = document.createTextNode("Remove");
-        let idText = document.createTextNode(localStorage.key(i).slice(4)); // Slice is used to extract an elements ID.
-        let nameText = document.createTextNode(tempName);
-        let colourText = document.createTextNode(tempColour);
-        let priceText = document.createTextNode(tempPrice);
-    
-        // Give the text nodes a parent.
-        buttonNode.appendChild(removeText);
-        colourNode.appendChild(colourText);
-        removeCell.appendChild(buttonNode);
-        idCell.appendChild(idText);
-        imgCell.appendChild(imgNode);
-        imgCell.appendChild(colourNode);
-        nameCell.appendChild(nameText);
-        priceCell.appendChild(priceText);        
+        // Append the children to the description container.
+        descContainer.appendChild(colourNode);
+        descContainer.appendChild(priceNode);
 
-        // Asign the table row to be the parent of the newly created elements.
-        tableRow.appendChild(removeCell);
-        tableRow.appendChild(idCell);
-        tableRow.appendChild(imgCell);
-        tableRow.appendChild(nameCell);
-        tableRow.appendChild(priceCell);
+        // Append the children to the title container.
+        titleContainer.appendChild(titleNode);
+        titleContainer.appendChild(removeNode);
+
+        // Append the children to the flexbox child container.
+        flexChildContainer.appendChild(titleContainer);
+        flexChildContainer.appendChild(imgNode);
+        flexChildContainer.appendChild(descContainer);
+
     
         // Append a key-value pair to the rows dictionary to enable sorting.
-        rows[parseInt(localStorage.key(i).slice(4))] = tableRow;  
+        children[parseInt(localStorage.key(i).slice(4))] = flexChildContainer;  
     
         // Update subtotal
         subtotal += parseFloat(tempPrice.slice(1));
     }
 
-    let keys = Object.keys(rows); // Get array of keys.
+    let keys = Object.keys(children); // Get array of keys.
     keys.sort(); // Sort keys in asc order.
 
-    // For each sorted key, append the row to the table body.
+    // For each sorted key, append child container to the parent Flexbox.
     for (let i = 0; i < keys.length; i++) {
-        cartBody.appendChild(rows[keys[i]]);
+        flexParentContainer.appendChild(children[keys[i]]);
     }
-    
-    // Create the table footer.
-    
+        
     // Format the subtotal data.
     subtotal = subtotal.toFixed(2); // Round to two decimal places, toFixed returns a String.
     subtotal = "£" + subtotal;
     
-    // Create a new table row for the footer.
-    let footerRow = document.createElement("tr");
-    let subtotalCell = document.createElement("td");
-    let removeAllCell = document.createElement("td");
+    let pageContainer = flexParentContainer.parentElement;
+
+    // Create a new container to show the subtotal.
+    let divider = document.createElement("hr");
+    let subtotalContainer = document.createElement("div");
+    let subtotalText = document.createElement("p");
     let removeAllNode = document.createElement("button");
 
-    removeAllNode.classList.add("remove-button"); // Add class to element.
+    divider.classList.add("light");
+    removeAllNode.classList.add("remove-all"); // Add class to element.
+    subtotalContainer.classList.add("subtotal");
 
     // Create onclick attribute.
     let onclickAtt = document.createAttribute("onclick");
     onclickAtt.value = "handleRemoveAll()";
     
-    // Set colspan attributes to cover the entire footer.
-    let subColspanAtt = document.createAttribute("colspan");
-    let buttonColspanAtt = document.createAttribute("colspan");
-    buttonColspanAtt.value = "2";
-    subColspanAtt.value = "4";
-    
     // Set attribute.
-    subtotalCell.setAttributeNode(subColspanAtt);
-    removeAllCell.setAttributeNode(buttonColspanAtt);
-    
-    // Create text nodes.
-    let subtotalText = document.createTextNode("Subtotal: " + subtotal);
-    let removeAllText = document.createTextNode("Clear All");
-    
-    // Append all attributes, text nodes, and elements to their relevent parents.
     removeAllNode.setAttributeNode(onclickAtt);
-    removeAllNode.appendChild(removeAllText);
-    removeAllCell.appendChild(removeAllNode);
-    subtotalCell.appendChild(subtotalText);
-    footerRow.appendChild(removeAllCell);
-    footerRow.appendChild(subtotalCell);
+    
+    // Create text content.
+    subtotalText.innerHTML = "Subtotal: " + subtotal;
+    removeAllNode.innerHTML = "Clear all";   
 
-    footerBody.appendChild(footerRow); // Add the newly created row to the table.
+    pageContainer.appendChild(removeAllNode);
+    pageContainer.appendChild(divider);
+    subtotalContainer.appendChild(subtotalText);
+    pageContainer.appendChild(subtotalContainer);
+
 }
-

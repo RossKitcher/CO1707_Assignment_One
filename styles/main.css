@@ -188,6 +188,7 @@ body {
 /* Change color of line break */
 .dark {
     color: white;
+    background-color: white;
 }
 
 /* ==================== Products Styles ==================== */
@@ -355,7 +356,7 @@ body {
 /* Set width and automatic horizontal margin for the main container. */
 .cart-content {
     display: block;
-    width: 90rem;
+    width: 70%;
     margin: 1rem auto;
 }
 
@@ -364,87 +365,105 @@ body {
     font-size: 2.4rem;
 }
 
-.cart-content table {
-
-    /* Set 100% width to fill container. */
-    width: 100%;
-
-    box-shadow: 0 0 4px var(--slate);
+/* Style the flexbox parent. */
+.cart-parent {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
 }
 
-/* Add a border around each cell */
-.cart-content table, .cart-content th, .cart-content td {
-    border: 1px solid white;
-    border-collapse: collapse; /* Touching borders are 'collapsed' into one, ensuring the border-width is always 1px. */
-}
-
-/* Style the table headings. */
-.cart-content table thead tr th {
-    background-color: var(--slate);
-    color: white;
-    font-size: 1.4rem;
-    padding: 1rem;
-}
-
-/* Style the table body. */
-.cart-content table tbody tr td {
+/* Style the flexbox children */
+.cart-child {
     background-color: var(--cloud);
-    color: black;
-    width: 24%;
-    text-align: center;
+    box-shadow: 0 0 10px var(--cloud);
+    height: 18rem;
 }
 
-/* Give the first column a lesser width. */
-.cart-content table tbody tr td:nth-child(1), .cart-content table tbody tr td:nth-child(2) {
-    width: 8%;
-    border-right: none;
+.cart-title {
+    background-color: var(--slate);
+    height: 4rem;
 }
 
-/* Add font styles to the 4th column (product name). */
-.cart-content table tbody tr td:nth-child(4) {
+.cart-child h3 {
+    color: white;
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.6rem;
+    display: inline-block;    
+}
+
+.cart-desc {
+    display: inline-block;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    vertical-align: top;
+}
+
+.cart-child img {
+    display: inline-block;
+    width: 14rem;
+    height: 14rem;
+}
+
+.cart-remove {
+    display: inline-block;
+    width: 10%;
+}
+
+.cart-empty p {
+    text-align: center; /* Center horizontally */
+    line-height: 14rem; /* Center vertically */
+    margin: 0;
+    color: var(--grey);
+}
+
+/* Class for a divider on a light background. */
+.light {
+    color: var(--slate);
+    background-color: var(--slate);
+}
+
+.subtotal {
+    display: block;
+    text-align: right;
     font-weight: 700;
-    font-size: 1.1rem;
 }
 
-/* Set dimensions of images inside the table. */
-.cart-content table tbody tr td img {
-    width: 10rem;
-    height: 10rem;
-    margin-top: 1rem;
-}
-
-/* Set styles of the Remove button. */
-.cart-content .remove-button {
+/* Style the remove buttons by deleting default styling and adding my own. */
+.remove-button {
+    display: block;
     text-decoration: none;
     color: white;
     background-color: var(--red);
-    padding: .5rem;
-    border-radius: 5px;
-    box-shadow: 0 0 4px var(--slate);
+    padding: 1.5rem 1rem;
     cursor: pointer;
     border: none;
-
+    float: right;
+    width: 10%;
+    min-width: 6rem;    
     transition: .3s;
 }
 
-/* When a remove button is hovered. */
-.cart-content .remove-button:hover {
-    background-color: #9e111b;
-}
-
-/* Style the table footer. */
-.cart-content table tfoot tr td {
-    background-color: var(--slate);
-    color: white;
-    text-align: right;
-    border: none;
+.remove-button:hover {
+    width: 20%;
     font-weight: 700;
-    padding: .5rem;
 }
 
-/* Style the table body when there are no items in the shopping cart. */
-.cart-content table tbody tr .empty {
-    padding: 10rem;
+.remove-all {
+    display: block;
+    width: 100%;
+    border: none;
+    margin: 1rem 0;
+    background-color: var(--red);
+    color: white;
+    padding: .8rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.remove-all:hover {
+    padding: 1.2rem .8rem;
+    font-weight: 700;
 }
 
 /* Class to hide an element. */
@@ -480,12 +499,6 @@ body {
     font-size: 2rem;
 }
 
-/* Styles for screen sizes less than 1480px and more than 1080px. */
-@media only screen and (max-width: 1480px) {
-    .cart-content {
-        width: 65rem;
-    }
-}
 
 /* Styles for screen sizes less than 1080px and more than 800px (laptops) */
 @media only screen and (max-width: 1080px) {
@@ -498,14 +511,6 @@ body {
 
     .content h2 {
         font-size: 1.7rem;
-    }
-
-    .cart-content {
-        width: 45rem;
-    }
-
-    .cart-content table thead tr th {
-        font-size: 1.2rem;
     }
 
     .item-container {
@@ -579,27 +584,6 @@ body {
         height: 17rem;
     }
 
-    .cart-content {
-        width: 30rem;
-    }
-
-    .cart-content table tbody tr td img {
-        width: 8rem;
-        height: 8rem;
-    }
-
-    .cart-content table thead tr th {
-        font-size: 1rem;
-    }
-
-    .cart-content table tbody tr td:nth-child(4) {
-        font-size: 1rem;
-    }
-
-    .cart-content .remove-button {
-        font-size: .7rem;
-    }
-
     .item-container {
         width: 30rem;
     }
@@ -608,10 +592,14 @@ body {
         width: 25rem;
     }
 
+    .cart-content {
+        width: 90%;
+    }
+
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
-    
+
     .logo {
         height: 100px;
     }
@@ -643,24 +631,6 @@ body {
 
     .youtube-video {
         height: 13rem;
-    }
-
-    .cart-content {
-        width: 24rem;
-    }
-
-    .cart-content table tbody tr .empty {
-        padding: 6rem;
-    }
-
-    .cart-content table tbody tr td img {
-        width: 6rem;
-        height: 6rem;
-    }
-
-    .cart-content .remove-button {
-        font-size: .7rem;
-        padding: .3rem .2rem;
     }
 
     .item-container {
@@ -721,6 +691,38 @@ body {
 
     .item-container {
         width: 17rem;
+    }
+
+    .cart-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .cart-child {
+        height: fit-content;
+    }
+
+    .cart-child img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .cart-desc {
+        display: block;
+    }
+
+    .price {
+        text-align: center;
+    }
+
+    .remove-button {
+        display: block;
+        min-width: 100%;
+        padding: .5rem ;
+    }
+
+    .remove-button:hover {
+        background-color: #9e111b;
     }
 }
 

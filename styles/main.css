@@ -18,10 +18,10 @@
 
 /* Set global styles */
 body {
-    margin: 0;
-    padding: 0;
     font-family: sans-serif, serif;
     font-weight: 500;
+    margin: 0;
+    padding: 0;
 }
 
 /* ==================== Header Styles ==================== */
@@ -44,17 +44,17 @@ body {
 }
 
 .nav-header {
-    vertical-align: top;
+    color: white;
     display: inline-block; /* Inline-block is used to allow the margin to be changed. */
+    font-size: 2rem;
     margin: 3rem 0 0 0; /* Center the header */
     text-shadow: 1px 1px 4px black; /* Emphasise the title using a small shadow */
-    color: white;
-    font-size: 2rem;
+    vertical-align: top;
 }
 
 .nav-links {
-    list-style-type: none; /* Remove default bullet points. */
     display: inline; /* Display content on the same line. */
+    list-style-type: none; /* Remove default bullet points. */
 }
 
 .nav-link {
@@ -62,13 +62,12 @@ body {
 }
 
 .nav-link a {
-    display: block;
-    text-decoration: none; /* Remove default text decoration for hyperlinks. */
     color: white;
-    margin-top: 2.6rem; /* Center the links inside the navbar */
+    display: block;
     font-weight: 500;
+    margin-top: 2.6rem; /* Center the links inside the navbar */
     padding: 1rem;
-
+    text-decoration: none; /* Remove default text decoration for hyperlinks. */
     transition: .3s; /* Adds a transition to the :hover effect to give a smoother look. */
 }
 
@@ -83,8 +82,8 @@ body {
 }
 
 .burger-nav {
-    height: 0px; /* Set height to zero so transition duration can be applied. */
     display: block;
+    height: 0; /* Set height to zero so transition duration can be applied. */
     transition: .1s;
 }
 
@@ -97,19 +96,21 @@ body {
     height: 60px;
     transition: .1s;
 }
+
 .show .burger-links {
-    list-style-type: none;
     display: inline-block;
+    list-style-type: none;
 }
+
 .show .burger-link {
     float: left;
     margin-top: .3rem;
-
 }
+
 .show .burger-link a {
-    text-decoration: none;
     color: white;
     padding: 1rem;
+    text-decoration: none;
     transition: .3s;
 }
 
@@ -163,40 +164,40 @@ body {
 
 /* Set width and height for iFrame embedded YouTube video. */
 .youtube-video {
-    width: inherit;
     height: 25rem;
+    width: inherit;
 }
 
 /* ==================== Footer Styles ==================== */
 /* Flexbox is used to evenly display and wrap multiple columns in the footer. */
 /* Flexbox parent */
 .footer {
+    align-items: flex-start; /* Align children to the top */
+    background-color: var(--grey);
     display: flex; /* Enable flexbox. */
     flex-flow: row wrap; /* Shorthand to order from left to right in a row and enable wrapping. */
     justify-content: center; /* Center all children */
-    align-items: flex-start; /* Align children to the top */
-    background-color: var(--grey);
 }
 
 /* Flexbox child */ 
 .footer-child {
+    color: white;
     flex-grow: 1;
     margin: 1rem;
-    color: white;
 }
 
 /* Change color of line break */
 .dark {
-    color: white;
     background-color: white;
+    color: white;
 }
 
 /* ==================== Products Styles ==================== */
 
 /* Style the same-page navigation. */
 .products-page ul {
-    margin: 0;
     display: block;
+    margin: 0;
 }
 
 .products-page ul li {
@@ -205,8 +206,8 @@ body {
 
 .products-page ul li a {
     display: block;
-    padding: .5rem 1rem;
     margin: .5rem 0;
+    padding: .5rem 1rem;
     transition: .3s;
 }
 
@@ -217,35 +218,23 @@ body {
 
 /* Style the 'top' button container that will take the user to the top of the page. */
 .sticky-top-button {
-
-    /* Set a fixed position at the top of the page. */
-    position: fixed; 
-    top: 0;
-
-    /* Set a 100% width to create a bar across the whole page. */
-    width: 100%;
-
-    /* Set remaining styles. */
     background-color: var(--grey);
-    text-align: center;
     padding: 1rem 0;
-
-    /* Apply a Z-index of zero to ensure it is displayed beneath the site's navigation. */
-    /* This ensures the 'top' button is only displayed when a user is scrolling down the page. */
+    position: fixed; 
+    text-align: center;
+    top: 0;
+    width: 100%;
     z-index: 0;
 }
 
 /* Style the actual 'top' button. */
 .sticky-top-button a {
-
-    text-decoration: none;
-    color: white;    
-    font-weight: 700;
+    color: white;
     font-size: 1.2rem;
-
-    padding: 1rem 10rem;
+    font-weight: 700;
     letter-spacing: .1rem;
-
+    padding: 1rem 10rem;
+    text-decoration: none;
     transition: .3s;
 }
 
@@ -256,40 +245,35 @@ body {
 
 /* Style the FlexBox parent. */
 .products-parent {
+    align-items: flex-start; /* Align a row from the top of each child. */
     display: flex;
     flex-flow: row wrap; /* Display children from left to right and wrap children to fit screen width. */
-    justify-content: space-evenly; /* Display children evenly. */
-    align-items: flex-start; /* Align a row from the top of each child. */
     gap: 1rem; /* Add a 'gap' in-between each child. */
-
+    justify-content: space-evenly; /* Display children evenly. */
     margin: 1rem 4rem;
 }
 
 /* Style the FlexBox children. */
 .products-child {
-    flex-grow: 0; /* Keep a consistent width if screen is resized. */
-    flex-basis: 25rem; /* Set default size of element. */
-    box-shadow: 0 0 8px var(--slate); /* Add a small shadow to add emphasis to a product. */
     border-radius: 4px;
+    box-shadow: 0 0 8px var(--slate); /* Add a small shadow to add emphasis to a product. */
+    flex-basis: 25rem; /* Set default size of element. */
+    flex-grow: 0; /* Keep a consistent width if screen is resized. */
 }
 
 /* Style a product's display image. */
 .products-child img {
-
-    /* Set dimensions of the product image. */
-    width: 20rem;
-    height: 20rem;
-
-    /* Set block display and an automatic horizontal margin to keep the image centered. */
     display: block;
+    height: 20rem;
     margin: 0 auto;
+    width: 20rem;
 }
 
 /* Style a product's title. */
 .product-desc h3 {
     color: var(--gold);
-    text-shadow: 0 0 3px black;
     font-size: 2rem;
+    text-shadow: 0 0 3px black;
 }
 
 /* Style a product's description container. */
@@ -305,39 +289,25 @@ body {
 
 /* Style a product's price. */
 .price {
-    font-weight: 700;
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Style a product's 'Add to cart' button. */
 .button {
-
-    /* Remove the default <button> styling. */
-    border: none;
-    text-decoration: none;
-
-    /* Set the cursor's state when it hovers this button. */
-    cursor: pointer;
-
-    /* Set colours. */
     background-color: var(--gold);
+    border: none; /* Remove the default <button> styling. */
+    border-radius: 5px; /* Round the edges of the element. */
     color: black;
-
-    /* Set the button's text styling. */
-    padding: .5rem 3rem;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: .05rem;
-    
-    /* Round the edges of the element. */
-    border-radius: 5px;
-
-    /* Center the button inside it's containter. */
+    cursor: pointer; /* Set the cursor's state when it hovers this button. */
     display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: .05rem;
     margin: 0 auto;    
-
-    /* Add transition timer for when :hover is triggered. */
-    transition: .3s;
+    padding: .5rem 3rem;
+    text-decoration: none;
+    transition: .3s; /* Add transition timer for when :hover is triggered. */
 }
 
 /* When the button is hovered by the cursor. */
@@ -356,8 +326,8 @@ body {
 /* Set width and automatic horizontal margin for the main container. */
 .cart-content {
     display: block;
-    width: 70%;
     margin: 1rem auto;
+    width: 70%;
 }
 
 .cart-content h1 {
@@ -386,23 +356,23 @@ body {
 
 .cart-child h3 {
     color: white;
+    display: inline-block;  
+    font-size: 1.6rem;  
     margin: 0;
     padding: 1rem;
-    font-size: 1.6rem;
-    display: inline-block;    
 }
 
 .cart-desc {
     display: inline-block;
-    padding: 0 1rem;
     font-size: 1.4rem;
+    padding: 0 1rem;
     vertical-align: top;
 }
 
 .cart-child img {
     display: inline-block;
-    width: 14rem;
     height: 14rem;
+    width: 14rem;
 }
 
 .cart-remove {
@@ -411,59 +381,59 @@ body {
 }
 
 .cart-empty p {
-    text-align: center; /* Center horizontally */
+    color: var(--grey);
     line-height: 14rem; /* Center vertically */
     margin: 0;
-    color: var(--grey);
+    text-align: center; /* Center horizontally */
 }
 
 /* Class for a divider on a light background. */
 .light {
-    color: var(--slate);
     background-color: var(--slate);
+    color: var(--slate);
 }
 
 .subtotal {
     display: block;
-    text-align: right;
     font-weight: 700;
+    text-align: right;
 }
 
 /* Style the remove buttons by deleting default styling and adding my own. */
 .remove-button {
-    display: block;
-    text-decoration: none;
-    color: white;
     background-color: var(--red);
-    padding: 1.5rem 1rem;
-    cursor: pointer;
     border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
     float: right;
-    width: 10%;
-    min-width: 6rem;    
+    min-width: 6rem;
+    padding: 1.5rem 1rem;
+    text-decoration: none;
     transition: .3s;
+    width: 10%;
 }
 
 .remove-button:hover {
-    width: 20%;
     font-weight: 700;
+    width: 20%;
 }
 
 .remove-all {
-    display: block;
-    width: 100%;
-    border: none;
-    margin: 1rem 0;
     background-color: var(--red);
+    border: none;
     color: white;
-    padding: .8rem;
     cursor: pointer;
+    display: block;
+    margin: 1rem 0;
+    padding: .8rem;
     transition: .3s;
+    width: 100%;
 }
 
 .remove-all:hover {
-    padding: 1.2rem .8rem;
     font-weight: 700;
+    padding: 1.2rem .8rem;
 }
 
 /* Class to hide an element. */
@@ -474,18 +444,17 @@ body {
 /* ==================== View Item Styles ==================== */
 
 .item-container {
-    width: 50rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px var(--slate);
     display: block;
     margin: 1rem auto;
-
-    box-shadow: 0 0 5px var(--slate);
-    border-radius: 4px;
+    width: 50rem;
 }
 
 .item-container img {
-    width: 40rem;
     display: block;
     margin: 0 auto;
+    width: 40rem;
 }
 
 .item-desc {
@@ -532,13 +501,12 @@ body {
 
     /* Position the burger icon */
     .burger-icon {
+        cursor: pointer;
         display: inline;
         float: right;
-        cursor: pointer;
-        margin-top: 3rem;
         margin-right: 1rem;
+        margin-top: 3rem;
         padding: .3rem .5rem;
-
         transition: .3s;
     }
 
@@ -548,11 +516,11 @@ body {
 
     /* Display the burger icon */
     .bar1, .bar2, .bar3 {
-        width: 1.8rem;
-        height: .2rem;
         background-color: white;
+        height: .2rem;
         margin: .3rem 0;
         transition: .4s;     
+        width: 1.8rem;
     }
 
     .logo {
@@ -660,8 +628,8 @@ body {
     }
 
     .nav-header {
-        margin-top: 1.5rem;
         font-size: 1.2rem;
+        margin-top: 1.5rem;
     }
     .burger-icon {
         margin-top: 1rem;
@@ -676,8 +644,8 @@ body {
     }
 
     .products-child img {
-        width: 18rem;
         height: 18rem;
+        width: 18rem;
     }
 
     .product-desc h3 {
@@ -703,8 +671,8 @@ body {
 
     .cart-child img {
         display: block;
-        width: 100%;
         height: auto;
+        width: 100%;
     }
 
     .cart-desc {

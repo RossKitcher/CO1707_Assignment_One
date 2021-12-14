@@ -45,3 +45,7 @@ This menu icon is animated and, when clicked, will show new navigation links bel
 The footer is displayed at the bottom of all webpages and features information such as links, contact info, and location.  
 
 To display this information in a responsive manner, a flexbox is used to create three columns that are resized and wrapped depending on the screen size.
+### Student Details
+* Ross Kitcher
+* G20914608
+* rkitcher@uclan.ac.uk

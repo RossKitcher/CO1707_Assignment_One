@@ -169,6 +169,25 @@ body {
 }
 
 /* ==================== Footer Styles ==================== */
+
+/* The following three classes are used to keep the footer always visible and always on the bottom of the screen. */
+/* Source: https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 25rem;
+}
+
+.stay-bottom {
+    bottom: 0;
+    height: 25rem;
+    position: absolute;
+    width: 100%;
+}
+
 /* Flexbox is used to evenly display and wrap multiple columns in the footer. */
 /* Flexbox parent */
 .footer {
@@ -564,6 +583,13 @@ body {
         width: 90%;
     }
 
+    .content-wrap {
+        padding-bottom: 30rem;
+    }
+
+    .stay-bottom {
+        height: 30rem;
+    }
 }
 /* Styles for screen sizes less than 500px (smartphones) */
 @media only screen and (max-width: 500px) {
@@ -618,6 +644,18 @@ body {
 
     .item-desc button {
         font-size: .9rem;
+    }
+}
+
+/* Exact media query for when the footer flex box wraps to one child per row, ensuring the footer is always visible. */
+@media only screen and (max-width: 418px) {
+
+    .content-wrap {
+        padding-bottom: 45rem;
+    }
+    
+    .stay-bottom {
+        height: 45rem;
     }
 }
 
@@ -725,6 +763,10 @@ body {
     .products-child img {
         width: 16rem;
         height: 16rem;
+    }
+
+    .cart-empty p {
+        font-size: .85rem;
     }
 }
 

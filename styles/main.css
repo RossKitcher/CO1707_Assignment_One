@@ -178,12 +178,12 @@ body {
 }
 
 .content-wrap {
-    padding-bottom: 25rem;
+    padding-bottom: 18rem;
 }
 
 .stay-bottom {
     bottom: 0;
-    height: 25rem;
+    height: 18rem;
     position: absolute;
     width: 100%;
 }
